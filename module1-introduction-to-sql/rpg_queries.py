@@ -1,9 +1,9 @@
+#RUN QUERIES ON AN SQLITE FILE
 # import sqlite
 import sqlite3
 
 # establish a connection with the desired database
 conn = sqlite3.connect('rpg_db.sqlite3')
-conn  # (optional) test the output
 
 # create a cursor -> curs = conn.cursor() -> see loop below
 
@@ -15,7 +15,7 @@ query2a = 'SELECT COUNT(DISTINCT name) FROM charactercreator_character INNER JOI
 query2b = 'SELECT COUNT(DISTINCT name) FROM charactercreator_character INNER JOIN charactercreator_mage ON character_id = character_ptr_id'
 query2c = 'SELECT COUNT(DISTINCT name) FROM charactercreator_character INNER JOIN charactercreator_cleric ON character_id = character_ptr_id'
 query2d = 'SELECT COUNT(DISTINCT name) FROM charactercreator_character INNER JOIN charactercreator_fighter ON character_id = character_ptr_id'
-query2e = 'SELECT COUNT(DISTINCT name) FROM charactercreator_character INNER JOIN charactercreator_theif ON character_id = character_ptr_id'
+query2e = 'SELECT COUNT(DISTINCT name) FROM charactercreator_character INNER JOIN charactercreator_thief ON character_id = character_ptr_id'
 
 # query for the total number of items
 query3 = 'SELECT COUNT(item_id) FROM charactercreator_character_inventory;'
@@ -52,11 +52,12 @@ def executer(list_queries):
         curs = conn.cursor()
 
         # print results of each query
-        print(curs.execute(i))
         print(curs.execute(i).fetchall())
 
-        # close up each query
-        curs.close
+# close up curs after finished querying
+# curs.close
 
-        # commit each query
-        conn.commit()
+# commit updated instance
+# conn.commit()
+
+executer(queries)

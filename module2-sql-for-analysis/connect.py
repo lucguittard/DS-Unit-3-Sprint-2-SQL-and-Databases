@@ -109,3 +109,4 @@ pg_entries = pg_curs.fetchall()
 for entry, pg_entry in zip(entries, pg_entries):
     assert entry == pg_entry
 
+# need to commit created plot to get showing up on ElephantSQL.

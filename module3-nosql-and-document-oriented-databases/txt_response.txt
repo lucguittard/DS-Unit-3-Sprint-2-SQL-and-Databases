@@ -1,0 +1,38 @@
+1) Distinguish between use-cases of relational and non-relational databases.
+Relational databases:
+    For use with structured databases;
+    Index for each table calculated based on primary keys;
+    Require a specified schema/data-structure early-on;
+    Eg, working from a low-n computer setup 
+
+Non-relational databases:
+    For use with non-structured databases;
+    Natural scalability;
+    Values indexed by key hashes, makes for easier splits;
+    Eg, document-oriented databases
+
+2) How does working with MongoDB differ from working with 
+ElephantSQL and SQLITE? 
+Working with the former felt like a more streamlined experience; 
+I did not find myself fumbling over different file names 
+(eg. .csv, .py, .sqlite3) nor did I have to keep track of 
+table names and cursors for each query execution. 
+
+3) Write about the map-reduce process. What is recurssion?
+The benefit of the map-reduce approach to managing work is that it 
+allows individual work units to work independent of one-another, 
+with minimal coordination. In python, the map() function takes two 
+arguments, a function and an iterable. It applies the function to
+each of the iterable's items and returns a list of the results. 
+The reduce() function, from the func_tools module takes two 
+arguments, a function and a sequence. It applies the specified 
+function to the first two elements in the sequence, then to that 
+output and the third element, then to that output plus the fourth 
+element, and so on.  
+
+4) Use dir() and help() to inspect the db.test object and 
+see what else you can do. Check out db.test.insert_many and db.test.find_many to let you
+work with lots of data at once. 
+
+In reference to mod 2, 
+# need to commit created plot to get showing up on ElephantSQL.

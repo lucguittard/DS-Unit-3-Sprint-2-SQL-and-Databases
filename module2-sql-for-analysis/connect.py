@@ -1,4 +1,6 @@
-#pip install psycopg2-binary #(do this before going into python)
+# run these before entering python
+#pip install psycopg2-binary 
+#pip install wget
 
 #To connect csv data file to ElephantSQL, run the following in python
 import psycopg2
@@ -50,21 +52,27 @@ pg_conn = psycopg2.connect(dbname = dbname, user = user, password = password, ho
 pg_curs = pg_conn.cursor()
 
 # upload relevant sqlite file 
-wget 'https://github.com/lucguittard/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/titanic.sqlite3'
-mw 'titanic.sqlite3' titanic.sqlite3
+#import os 
+#os.system(wget "https://github.com/lucguittard/DS-Unit-3-Sprint-2-SQL-and-Databases/blob/master/module2-sql-for-analysis/titanic.sqlite3")
+#mw 'titanic.sqlite3' titanic.sqlite3
 
 # import sqlite3
-sl_conn = sqlite3.connect('titanic_db.sqlite3')
+sl_conn = sqlite3.connect('titanic.sqlite3')
 sl_curs = sl_conn.cursor()
 
 # test output
 sl_curs.execute('SELECT COUNT(*) FROM titanic').fetchall() 
+#"You must fetch all rows for the current query before executing 
+# new statements using the same connection." https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html 
+
+# get a list of entries
+entries = sl_curs.execute('SELECT * FROM titanic').fetchall()
 
 # check the schema
 sl_curs.execute('PRAGMA table_info(titanic);').fetchall()
 
 # make a datatable 
-titanic_table = """CREATE TABLE titanic(
+titanic_table = """CREATE TABLE titanic3(
     index SERIAL PRIMARY KEY, 
     Survived INT, Pclass INT, 
     Name VARCHAR(30), Sex VARCHAR(10), 
@@ -94,7 +102,7 @@ for entry in entries:
     pg_curs.execute(insert_entry)
 
 # check output
-spg_curs.fetchall()
+pg_curs.fetchall()
 
 # save changes
 pg_curs.close()

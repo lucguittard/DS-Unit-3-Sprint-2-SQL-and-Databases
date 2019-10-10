@@ -1,0 +1,49 @@
+# Welcome to SQL review! source:https://sqlbolt.com/lesson/select_queries_with_constraints_pt_2
+
+# specifying based on strings
+# find all Toy Story movies
+SELECT * FROM movies 
+WHERE Title LIKE "%Toy Story%";
+
+# find all the movies (and director) not directed by John Lasseter 
+SELECT Title, Director FROM movies 
+WHERE Director NOT LIKE "%John Lasseter%";
+
+
+# using ORDER BY 
+SELECT column, col2,...
+FROM table
+WHERE condition(s)
+ORDER BY column ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+
+# List all directors of Pixar movies (alphabetically), without duplicates 
+SELECT DISTINCT(Director) FROM movies
+ORDER BY Director ASC;
+
+#List the last four Pixar movies released (ordered from most recent to least)
+SELECT Title FROM movies
+ORDER BY Year DESC
+LIMIT 4;
+
+
+# JOINS!
+SELECT column, another_table_column, …
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table 
+    ON mytable.id = another_table.id
+WHERE condition(s)
+ORDER BY column, … ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+
+# Find the domestic and international sales for each movie
+SELECT title, domestic_sales, international_sales 
+FROM movies
+  JOIN boxoffice
+    ON movies.id = boxoffice.movie_id;
+
+# List all buildings and the distinct employee roles in each building (including empty buildings)
+SELECT DISTINCT building_name, role 
+FROM buildings 
+  LEFT JOIN employees
+    ON building_name = building;

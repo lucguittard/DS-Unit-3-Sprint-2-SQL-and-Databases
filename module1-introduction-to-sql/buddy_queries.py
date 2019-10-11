@@ -33,5 +33,5 @@ def executer(list_queries):
 
 # commit updated instance
 # conn.commit()
-
+ 
 executer(queries)

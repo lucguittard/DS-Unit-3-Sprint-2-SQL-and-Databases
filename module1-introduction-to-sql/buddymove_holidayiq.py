@@ -26,3 +26,4 @@ dset.to_sql('buddymove_holidayiq2', conn)
 
 # commit each query
 #conn.commit()
+ 
